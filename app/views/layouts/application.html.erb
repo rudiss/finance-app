@@ -45,12 +45,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">FinanceTracker</a>
+        <a class="navbar-brand" href="#">FinanceTracker </a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+            <li><%= link_to ' Portfolio ', 'http://rudisdev.com' , class: 'fa fa-chrome', target: '_blank' %></li>
+            <li><%= link_to '','https://www.facebook.com/juniorrsm', class: 'fa fa-facebook', target: '_blank' %></li>
+            <li><%= link_to '', 'https://twitter.com/rudis_lee' , class: 'fa fa-twitter', target: '_blank' %></li>
           </ul>
         </div>
       </div>
@@ -63,14 +63,15 @@
           <%= yield %>
         </div>
         <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
+          <div class="well sidebar-nav" style="background-color: transparent; border: 5px solid #e3e3e3">
+            <h3>Ações em Alta</h3>
+            <ol>
+              <small>FinanceTracker</small>
+              <p></p>
+              <strong><li><%= "Goggle 768.69"   %></li></strong><br/>
+              <strong><li><%= "Facebook 124.06"  %></li></strong><br/>
+              <strong><li><%= "Apple 105.6" %></li></strong><br/>
+            </ol>
           </div><!--/.well -->
         </div><!--/span-->
       </div><!--/row-->

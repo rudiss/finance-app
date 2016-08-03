@@ -1,14 +1,15 @@
 <div id="stock-lookup">
-  <h3>Procucar cotações da bolsa</h3>
+  <h3 class="titulo">Procucar ações da bolsa de valores</h3>
+  <br/>
   <%= form_tag search_stocks_path, remote: true, method: :get, id: 'stock-lookup-form' do %>
       <div class="form-group row no-padding text-center col-md-12">
         <div class="col-md-10"
         >
-          <%= text_field_tag :stock, params[:stock], placeholder: 'Símbolo de cotações da bolsa', autofocus: true, class: 'form-control search-box input-lg' %>
+          <%= text_field_tag :stock, params[:stock], placeholder: 'Cód. das ações "ex: GOOG para Google"', autofocus: true, class: 'form-control search-box input-lg' %>
         </div>
         <div class="col-md-2">
-          <%= button_tag(type: :submit, class: 'btn btn-success') do %>
-              <i class="fa fa-search"></i> Consultar cotação
+          <%= button_tag(type: :submit, class: 'btn btn-lg btn-primary') do %>
+              <i class="fa fa-search"></i> Consultar Ações
           <% end %>
 
         </div>
@@ -21,10 +22,41 @@
 
       <div id="stock-lookup-results" class="well results-block">
 
-      <strong>Simbolo:</strong> <%= @stock.ticker %>
-      <strong>Empresa:</strong> <%= @stock.name %>
-      <strong>Preço:</strong> <%= @stock.price %>
+        <strong>Cód.:</strong> <%= @stock.ticker %>
+
+        <strong>Empresa:</strong> <%= @stock.name %>
+
+        <strong>Preço:</strong> <%= @stock.price %><br/><br/>
+
+        <% if current_user.can_add_stock?(@stock.ticker) %>
+
+            <%= link_to 'Adiconar em minhas ações', user_stocks_path(user: current_user, stock_ticker: @stock.ticker, stock_id: @stock.id ? @stock.id : ''), class: 'btn btn-xs btn-success', method: :post %>
+
+        <% else %>
+
+        <span class="label label-default">
+
+           Não é possivel adicionadar essa ações pois você ja possuem
+
+          <% if !current_user.under_stock_limit? %>
+
+            10 ações
+
+          <% end %>
+
+          <% if current_user.stock_already_added?(@stock.ticker) %>
+
+          essa ações
+
+          <% end %>
+
+        </span>
+
+        <% end %>
+
       </div>
+
   <% end %>
-  <div id="stock-lookup-erros"></div>
+
+  <div id="stock-lookup-errors"></div>
 </div>
