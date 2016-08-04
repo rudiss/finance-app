@@ -1,0 +1,45 @@
+/**
+ * Created by rudis on 8/4/16.
+ */
+
+var init_friend_lookup;
+
+init_friend_lookup = function(){
+
+    $('#friend-lookup-form').on('ajax:before', function(event, data, status){
+
+        show_spinner();
+
+    });
+
+    $(this).on('ajax:after', function(event, data, status){
+
+        hide_spinner();
+
+    });
+
+    $(this).on('ajax:success', function(event, data, status){
+
+        $('#friend-lookup').replaceWith(data);
+
+        init_friend_lookup();
+
+    });
+
+    $(this).on('ajax:error', function(event, xhr, status, error){
+
+        hide_spinner();
+
+        $('#friend-lookup-results').replaceWith(' ');
+
+        $('#friend-lookup-errors').replaceWith('Possoa não encontrada.');
+
+    });
+
+}
+
+$(document).ready(function() {
+
+    init_friend_lookup();
+
+})
