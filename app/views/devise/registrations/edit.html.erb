@@ -1,7 +1,7 @@
 <%= bootstrap_devise_error_messages! %>
 <div class="panel panel-default devise-bs">
   <div class="panel-heading">
-    <h4><%= t('.title', :resource => resource_class.model_name.human, :default => "Edit #{resource_name.to_s.humanize}") %></h4>
+    <h4><%= t('.s', :resource => resource_class.model_name.human, :default => "Editar Conta") %></h4>
   </div>
   <div class="panel-body">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
           <%= f.label :Senha %>
-          <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>
+          <i>(<%= t('.lst', :default => "deixe em branco caso não deseje alterar") %>
             )</i><br/>
           <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
         </div>
@@ -31,17 +31,17 @@
         </div>
         <div class="form-group">
           <%= f.label :Senha_atual %>
-          <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes') %>
+          <i>(<%= t('.s', :default => 'precisamos da sua senha atual para confimar suas mudanças') %>
             )</i>
           <%= f.password_field :current_password, class: "form-control" %>
         </div>
-        <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %>
+        <%= f.submit t('.a', :default => "Atualizar"), class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
 
-<p><%= t('.unhappy', :default => 'Unhappy') %>
-  ? <%= link_to t('.cancel_my_account', :default => "Cancel my account"), registration_path(resource_name), :data => {:confirm => t('.are_you_sure', :default => "Are you sure?")}, :method => :delete %>
+<p><%= t('.cancelar', :default => 'Deletar') %>
+  ? <%= link_to t('.cancelar_minha_conta', :default => "Cancelar minha conta"), registration_path(resource_name), :data => {:confirm => t('.voce_tem_certeza', :default => "Você tem certeza?")}, :method => :delete %>
   .</p>
 
-<%= link_to t('.back', :default => 'Back'), :back %>
+<%= link_to t('.voltar', :default => 'Voltar'), :back %>
