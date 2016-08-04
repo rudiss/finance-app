@@ -1,5 +1,5 @@
 <div class="jumbotron">
   <h1>Bem vindo, <%= current_user.full_name.present? ? current_user.full_name : current_user.email %>!</h1>
   <p>FinanceTracker</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Começe agora!</a></p>
+  <p><%= link_to 'Comece Agora!', my_portfolio_path, class: "btn btn-warning btn-lg" %></p>
 </div>
