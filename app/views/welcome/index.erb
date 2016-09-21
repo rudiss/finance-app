@@ -1,5 +1,6 @@
 <div class="jumbotron">
+  <p class="miniLogo">FinanceTracker</p>
   <h1>Bem vindo, <%= current_user.full_name.present? ? current_user.full_name : current_user.email %>!</h1>
-  <p>FinanceTracker</p>
+  <br/>
   <p><%= link_to 'Comece Agora!', my_portfolio_path, class: "btn btn-warning btn-lg" %></p>
 </div>
